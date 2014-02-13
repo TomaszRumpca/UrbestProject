@@ -4,6 +4,7 @@
     <string name="app_name">Urbest 2.0</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-	<string name="showList">Pokaż listę</string>
-	
+    <string name="showList">Pokaż listę</string>
+    <string name="title_activity_main2">Urbest 2.0</string>
+
 </resources>

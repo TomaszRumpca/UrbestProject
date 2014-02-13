@@ -1,105 +1,134 @@
 package lemur.urbest.urbestproject;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import android.content.Intent;
-import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.util.Log;
+import android.provider.MediaStore;
+import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Intent;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
+import static android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends Activity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-        int k = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
-        Log.i("GooglePlayServicesUtil","isGooglePlayServicesAvailable: "+k);
-        //Log.i("GooglePlayServicesUtil","GOOGLE_PLAY_SERVICES_VERSION_CODE: "+GooglePlayServicesUtil.GOOGLE_PLAY_SERVICES_VERSION_CODE);
-        //Log.i("GooglePlayServicesUtil","GOOGLE_PLAY_STORE_PACKAGE: "+GooglePlayServicesUtil.GOOGLE_PLAY_STORE_PACKAGE);
-        
-        
-        GoogleMap map = ((SupportMapFragment)  getSupportFragmentManager().findFragmentById(R.id.map))
-                .getMap();
-        
-        
-        
-        map.setMyLocationEnabled(true);
-        
-        
-       map.addMarker(new MarkerOptions()
-                .position(new LatLng(0, 0))
-                .title("Zadanie 1"));
-        
-        
-        Tracker gps = new Tracker(this);
-        double latitude=0;
-        double longitude=0;
-        // check if GPS enabled     
-        if(gps.canGetLocation()){
-             
-            latitude = gps.getLatitude();
-            longitude = gps.getLongitude();
-            
-            map.addMarker(new MarkerOptions()
-            	.position(new LatLng(latitude, longitude))
-            	.title("Zadanie 1"));
-            
-            Log.i("Location", "Latitude: "+latitude+" Longitude: "+longitude);
-            // \n is for new line
-            //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();    
-        }else{
-            // can't get location
-            // GPS or Network is not enabled
-            // Ask user to enable GPS/network in settings
-            gps.showSettingsAlert();
-        }
-        gps.stopUsingGPS();
-      
-        
-    	
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        
-    	MenuInflater menuInflater = getMenuInflater();
-    	getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-
+	private Button takePhoto;
+	private Button scanBarcode;
+	private Button showMap;
+	private Button showRanking;
+	
+	private Uri photoUri;
+	private final static int TAKE_PHOTO = 1;
+	private final static String PHOTO_URI = "photoUri";
+	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
 		
-		switch(item.getItemId()){
-		
-		case R.id.showList:
-			Intent intent = new Intent(getApplicationContext(),ListV.class);
-			startActivity(intent);
-			break;
-			
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-		return true;
-		
+		addListenerOnButton();
 	}
-    
+
+	
+
+	public void addListenerOnButton() {
+ 
+		showMap = (Button) findViewById(R.id.showMap);
+ 
+		showMap.setOnClickListener(new OnClickListener() {
+ 
+			@Override
+			public void onClick(View arg0) {
+ 
+			  Intent intent = 
+                            new Intent(getApplicationContext(),MapActivity.class);
+			    startActivity(intent);
+ 
+			}
+ 
+		});
+		
+		
+		showRanking = (Button) findViewById(R.id.showRanking);
+		
+		showRanking.setOnClickListener(new OnClickListener() {
+			 
+			@Override
+			public void onClick(View arg0) {
+ 
+			  Intent intent = 
+                            new Intent(getApplicationContext(),ListV.class);
+			    startActivity(intent);
+ 
+			}
+ 
+		});
+		
+		
+		takePhoto = (Button) findViewById(R.id.takePhoto);
+		
+		takePhoto.setOnClickListener(new OnClickListener() {
+			 
+			@Override
+			public void onClick(View arg0) {
+ 
+				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				photoUri = getContentResolver().insert(EXTERNAL_CONTENT_URI, new ContentValues());
+				intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+				startActivity(intent);
+				
+ 
+			}
+ 
+		});
+		
+		
+		scanBarcode = (Button) findViewById(R.id.scanBarcode);
+		
+		scanBarcode.setOnClickListener(new OnClickListener() {
+			 
+			@Override
+			public void onClick(View arg0) {
+ 
+				try {
+
+				    Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+				    intent.putExtra("SCAN_MODE", "QR_CODE_MODE"); // "PRODUCT_MODE for bar codes
+
+				    startActivityForResult(intent, 0);
+
+				} catch (Exception e) {
+
+				    Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
+				    Intent marketIntent = new Intent(Intent.ACTION_VIEW,marketUri);
+				    startActivity(marketIntent);
+
+				}
+				
+				
+ 
+			}
+ 
+		});
+	}
+	
+	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {           
+	    super.onActivityResult(requestCode, resultCode, data);
+	    if (requestCode == 0) {
+
+	        if (resultCode == RESULT_OK) {
+	            String contents = data.getStringExtra("SCAN_RESULT");
+	            Toast.makeText(getApplicationContext(), contents, Toast.LENGTH_LONG).show();
+	        }
+	        if(resultCode != RESULT_OK){
+	            //handle cancel
+	        }
+	    }
+	}
 }
