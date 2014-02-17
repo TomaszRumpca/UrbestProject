@@ -50,6 +50,10 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDsBzZCzsjDeqgz9WZyLOvDQhy7hMclxeQ" />
 
+        <service 
+            android:name="lemur.urbest.urbestproject.Tracker2"
+            android:label="Tracker2"
+        	android:process=":remote" />
         
     </application>
 

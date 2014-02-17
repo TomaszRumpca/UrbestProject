@@ -1,8 +1,10 @@
 package lemur.urbest.urbestproject;
  
+import java.security.Provider;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import com.google.android.gms.maps.LocationSource.OnLocationChangedListener;
 
@@ -28,6 +30,7 @@ public class Tracker extends Service {
     boolean isNetworkEnabled = false;
     boolean canGetLocation = false;
  
+   
     Location location;
     double latitude;
     double longitude;
@@ -107,8 +110,10 @@ public class Tracker extends Service {
 	public void GetLowAccurracyLocation(){
 		
 		Location location=null;
-		LocationManager locationManager=null;
+		locationManager=null;
 		String provider;
+		
+		
 		try{
 			locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
 			
@@ -117,10 +122,13 @@ public class Tracker extends Service {
 		}
 		
 		try{
-			provider = locationManager.getBestProvider(createCoarseCriteria(), false);
+			provider = locationManager.getBestProvider(createFineCriteria(), false);
+			
+			Log.i("Tracker","Choosen provider: "+provider);
 			
 			location = locationManager.getLastKnownLocation(provider);
 			
+			 
 			//onLocationChanged(location);
 			
 			locationManager.requestLocationUpdates(provider, MIN_TIME_BW_UPDATES, 0, new LocationListener() {
@@ -135,17 +143,22 @@ public class Tracker extends Service {
 	            
 	            @Override
 	            public void onProviderDisabled(String provider) {
-	                Log.v("Tracker", "Provider " + provider + " - disabled ");
+	            	Log.i("Tracker", "Provider " + provider + " - disabled ");
 	                
+	            	if(!locationManager.isProviderEnabled(provider) && provider.equals(locationManager.GPS_PROVIDER)){
+	            		showGPSSettingsAlert(); 
+	            	}
+	                
+	            	
 	            }
 	            @Override
 	            public void onProviderEnabled(String provider) {
-	            	Log.v("Tracker", "Provider " + provider + " - enabled ");
+	            	Log.i("Tracker", "Provider " + provider + " - enabled ");
 	            }
 	            @Override
 	            public void onStatusChanged(String provider, int status,
 	                    Bundle extras) {
-	            	Log.v("Tracker", "StatusChanged: "+provider+" status: "+status);
+	            	Log.i("Tracker", "StatusChanged: "+provider+" status: "+status);
 	            }           
 	        });
 			
@@ -155,5 +168,31 @@ public class Tracker extends Service {
 	
 		
 	}
+	
+	public void showGPSSettingsAlert(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
+     
+        alertDialog.setTitle("GPS is settings");
+  
+        alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
+  
+        //Setting Icon to Dialog
+        //alertDialog.setIcon(R.drawable.delete);
+  
+        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+                mContext.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        });
+  
+     
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            dialog.cancel();
+            }
+        });
+  
+        alertDialog.show();
+    }
 
 }

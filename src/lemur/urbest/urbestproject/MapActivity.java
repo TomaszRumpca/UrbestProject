@@ -46,7 +46,8 @@ public class MapActivity extends FragmentActivity {
 		//		"Zadanie 1"));
 
 		
-		Tracker gps = new Tracker(this);
+		//Tracker gps = new Tracker(this);
+		startService(new Intent(this, Tracker2.class));
 	}
 
 
