@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="1300dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/popUpTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:orientation="horizontal"
+        android:layout_margin="15dp" />
+
+    <LinearLayout
+        android:id="@+id/mapLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.0"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/popUpOkButton"
+            style="@style/MenuButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="@string/popup_ok" />
+
+        <Button
+            android:id="@+id/popUpHelpButton"
+            style="@style/MenuButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="@string/popup_help" />
+    </LinearLayout>
+
+</LinearLayout>

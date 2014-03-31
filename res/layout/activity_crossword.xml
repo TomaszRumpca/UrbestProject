@@ -1,0 +1,309 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_relative_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main" >
+
+    <LinearLayout
+        android:id="@+id/crossword_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+            android:gravity="center">
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/first1"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/first2" />
+
+            <EditText
+                android:id="@+id/first2"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/first3" />
+
+            <EditText
+                android:id="@+id/first3"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/first4" />
+
+            <EditText
+                android:id="@+id/first4"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/first5" />
+
+            <EditText
+                android:id="@+id/first5"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/first6" />
+
+            <EditText
+                android:id="@+id/first6"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/first7" />
+
+            <EditText
+                android:id="@+id/first7"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/first8" />
+
+            <EditText
+                android:id="@+id/first8"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/first9" />
+
+            <EditText
+                android:id="@+id/first9"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/first10" />
+
+            <EditText
+                android:id="@+id/first10"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/first1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+            android:gravity="center">
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/second1"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/second2" />
+
+            <EditText
+                android:id="@+id/second2"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/second3" />
+
+            <EditText
+                android:id="@+id/second3"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/second4" />
+
+            <EditText
+                android:id="@+id/second4"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/second5" />
+
+            <EditText
+                android:id="@+id/second5"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/second1" />
+            
+             <View
+                android:layout_width="120dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center" >
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/third1"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/third2" />
+
+            <EditText
+                android:id="@+id/third2"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/third3" />
+
+            <EditText
+                android:id="@+id/third3"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/third4" />
+
+            <EditText
+                android:id="@+id/third4"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/third5" />
+
+            <EditText
+                android:id="@+id/third5"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/third6" />
+
+            <EditText
+                android:id="@+id/third6"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/third1" />
+             <View
+                android:layout_width="160dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/fourth1"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/fourth2" />
+
+            <EditText
+                android:id="@+id/fourth2"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/fourth3" />
+
+            <EditText
+                android:id="@+id/fourth3"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/fourth4" />
+
+            <EditText
+                android:id="@+id/fourth4"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/fourth5" />
+
+            <EditText
+                android:id="@+id/fourth5"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/fourth6" />
+
+            <EditText
+                android:id="@+id/fourth6"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/fourth7" />
+
+            <EditText
+                android:id="@+id/fourth7"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/fourth1" />
+             <View
+                android:layout_width="160dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+            android:gravity="center">
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/fifth1"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/fifth2" />
+
+            <EditText
+                android:id="@+id/fifth2"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/fifth3" />
+
+            <EditText
+                android:id="@+id/fifth3"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/fifth4" />
+
+            <EditText
+                android:id="@+id/fifth4"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/fifth5" />
+
+            <EditText
+                android:id="@+id/fifth5"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/fifth6" />
+
+            <EditText
+                android:id="@+id/fifth6"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/fifth7" />
+
+            <EditText
+                android:id="@+id/fifth7"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/fifth8" />
+
+            <EditText
+                android:id="@+id/fifth8"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/fifth9" />
+
+            <EditText
+                android:id="@+id/fifth9"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/fifth10" />
+
+            <EditText
+                android:id="@+id/fifth10"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/fifth1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center" >
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/sixth1"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/sixth2" />
+
+            <EditText
+                android:id="@+id/sixth2"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/sixth3" />
+
+            <EditText
+                android:id="@+id/sixth3"
+                style="@style/CrosswordEditTextBackground2"
+                android:nextFocusRight="@+id/sixth4" />
+
+            <EditText
+                android:id="@+id/sixth4"
+                style="@style/CrosswordEditTextBackground1"
+                android:nextFocusRight="@+id/sixth1" />
+             <View
+                android:layout_width="140dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button 
+        android:id="@+id/check_crossword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check it!"
+        android:layout_below="@+id/crossword_field"
+        />
+</RelativeLayout>
