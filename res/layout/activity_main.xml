@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
- android:id="@+id/map"
- android:layout_width="match_parent"
- android:layout_height="match_parent"
- class="com.google.android.gms.maps.SupportMapFragment"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:contentDescription="@drawable/lemur_logo"
+        android:src="@drawable/lemur_logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/task_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/MenuButtonStyle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <include
+                android:id="@+id/first_small_buttons_set"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                layout="@layout/buttons_layout" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:padding="2dp"
+        android:contentDescription="@drawable/urbest_image_scaled"
+        android:src="@drawable/urbest_image_scaled" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <include
+                android:id="@+id/second_small_buttons_set"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                layout="@layout/buttons_layout" />
+        </LinearLayout>
+
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/urbest_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+ 				style="@style/MenuButtonStyle"
+                 />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

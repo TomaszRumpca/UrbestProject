@@ -41,7 +41,7 @@ public class ListV extends Activity {
 	
 	private void fillItemList() {
 
-		itemCursor = db.getAllEntries();
+		itemCursor = db.getAllEntries(DatabaseHandler.LOCATIONS_TABLE);
 		startManagingCursor(itemCursor);
 		updateResultsList();
 

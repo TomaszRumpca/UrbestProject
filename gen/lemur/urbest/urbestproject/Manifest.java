@@ -9,6 +9,6 @@ package lemur.urbest.urbestproject;
 
 public final class Manifest {
     public static final class permission {
-        public static final String MAPS_RECEIVE="your_package_name.permission.MAPS_RECEIVE";
+        public static final String MAPS_RECEIVE="lemur.urbest.urbestproject.permission.MAPS_RECEIVE";
     }
 }
