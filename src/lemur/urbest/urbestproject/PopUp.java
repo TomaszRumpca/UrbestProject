@@ -9,8 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class PopUp {
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> better
 
 	public void ShowDialog(Context context, String text) {
 		// custom dialog
@@ -44,13 +47,19 @@ public class PopUp {
 
 	}
 
+<<<<<<< HEAD
 	
 	public void ShowAnswer(Context context, String text, String answer){
 		if(!answer.equals("")){
+=======
+	public void ShowAnswer(Context context, String text, String answer) {
+		if (!answer.equals("")) {
+>>>>>>> better
 			ShowAnswerDialog(context, text, answer);
 		} else {
 			ShowAnswerDialog(context, text);
 		}
+<<<<<<< HEAD
 		
 	}
 	
@@ -66,6 +75,24 @@ public class PopUp {
 		EditText edit = (EditText) dialog.findViewById(R.id.popUpEditText);
 
 		
+=======
+
+	}
+
+	public void ShowAnswerDialog(Context context, String text, String answer) {
+		final Dialog dialog = new Dialog(context);
+
+		dialog.setContentView(R.layout.answer_popup);
+		dialog.setTitle("Wprowad� odpowied�");
+
+		Button submitButton = (Button) dialog
+				.findViewById(R.id.popUpSubmitButton);
+		Button cancelButton = (Button) dialog
+				.findViewById(R.id.popUpCancelButton);
+
+		EditText edit = (EditText) dialog.findViewById(R.id.popUpEditText);
+
+>>>>>>> better
 		submitButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -82,6 +109,7 @@ public class PopUp {
 			}
 		});
 
+<<<<<<< HEAD
 		
 		dialog.show();
 	}
@@ -98,6 +126,23 @@ public class PopUp {
 		TextView textView = (TextView) dialog.findViewById(R.id.promptPopUpTextView);
 
 		
+=======
+		dialog.show();
+	}
+
+	public void ShowAnswerDialog(Context context, String text) {
+
+		final Dialog dialog = new Dialog(context);
+
+		dialog.setContentView(R.layout.prompt_popup);
+		dialog.setTitle(text);
+
+		Button ok = (Button) dialog.findViewById(R.id.protomptPopUpOkButton);
+
+		TextView textView = (TextView) dialog
+				.findViewById(R.id.promptPopUpTextView);
+
+>>>>>>> better
 		ok.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -106,7 +151,10 @@ public class PopUp {
 			}
 		});
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> better
 		dialog.show();
 	}
 }

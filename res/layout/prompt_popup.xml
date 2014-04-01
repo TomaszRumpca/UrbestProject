@@ -9,10 +9,17 @@
         android:id="@+id/promptPopUpTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_weight="1.0"
         android:orientation="horizontal"
         android:layout_margin="15dp" />
     
+=======
+        android:layout_margin="15dp"
+        android:layout_weight="1.0"
+        android:orientation="horizontal" />
+
+>>>>>>> better
     <LinearLayout
         android:id="@+id/mapLinearLayout"
         android:layout_width="match_parent"
@@ -27,9 +34,15 @@
             android:layout_height="40dp"
             android:layout_weight="1"
             android:text="@string/popup_ok" />
+<<<<<<< HEAD
 
      
     </LinearLayout>
 
 </LinearLayout>
     
+=======
+    </LinearLayout>
+
+</LinearLayout>
+>>>>>>> better

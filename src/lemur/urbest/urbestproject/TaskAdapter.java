@@ -7,24 +7,45 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+<<<<<<< HEAD
 public class TaskAdapter extends BaseAdapter  {
 
 	private int[] colors = new int[]{0xFF6600FF,0xFFFFFFFF};
 	private int[] textColors = new int[]{0xFFFFFFFF,0xFF6600FF};
 	
+=======
+public class TaskAdapter extends BaseAdapter {
+
+	private int[] colors = new int[] { 0xFF6600FF, 0xFFFFFFFF };
+	private int[] textColors = new int[] { 0xFFFFFFFF, 0xFF6600FF };
+
+>>>>>>> better
 	private LayoutInflater mInflater;
 	String[] title;
 	String[] description;
 	int[] points;
+<<<<<<< HEAD
 	
 	public TaskAdapter(Context context, String[] title, String[] description, int[] points){
 		
+=======
+
+	public TaskAdapter(Context context, String[] title, String[] description,
+			int[] points) {
+
+>>>>>>> better
 		this.mInflater = LayoutInflater.from(context);
 		this.description = description;
 		this.title = title;
 		this.points = points;
+<<<<<<< HEAD
 		
 	}
+=======
+
+	}
+
+>>>>>>> better
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
@@ -45,6 +66,7 @@ public class TaskAdapter extends BaseAdapter  {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+<<<<<<< HEAD
 		
 		ViewHolder holder;
 		
@@ -65,6 +87,29 @@ public class TaskAdapter extends BaseAdapter  {
 		holder.description.setText(String.valueOf(this.description[position]));
 		holder.points.setText(Integer.toString(this.points[position]));
 		
+=======
+
+		ViewHolder holder;
+
+		if (convertView == null) {
+			convertView = mInflater.inflate(R.layout.task_row_schema, null);
+			holder = new ViewHolder();
+			holder.title = (TextView) convertView.findViewById(R.id.task_title);
+			holder.description = (TextView) convertView
+					.findViewById(R.id.short_description);
+			holder.points = (TextView) convertView.findViewById(R.id.points);
+
+			convertView.setTag(holder);
+		} else {
+			holder = (ViewHolder) convertView.getTag();
+
+		}
+
+		holder.title.setText(String.valueOf(this.title[position]));
+		holder.description.setText(String.valueOf(this.description[position]));
+		holder.points.setText(Integer.toString(this.points[position]));
+
+>>>>>>> better
 		int posColor = position % colors.length;
 		holder.title.setTextColor(textColors[posColor]);
 		holder.description.setTextColor(textColors[posColor]);
@@ -76,6 +121,7 @@ public class TaskAdapter extends BaseAdapter  {
 		tw = (TextView) convertView.findViewById(R.id.task);
 		tw.setTextColor(textColors[posColor]);
 		convertView.setBackgroundColor(colors[posColor]);
+<<<<<<< HEAD
 		
 		
 		return convertView;
@@ -90,3 +136,16 @@ public class TaskAdapter extends BaseAdapter  {
 	}
 }
 
+=======
+
+		return convertView;
+	}
+
+	static class ViewHolder {
+		TextView title;
+		TextView description;
+		TextView points;
+
+	}
+}
+>>>>>>> better

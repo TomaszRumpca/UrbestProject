@@ -9,15 +9,25 @@
         android:id="@+id/crossword_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:orientation="vertical"
         android:gravity="center_horizontal"
         >
+=======
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+>>>>>>> better
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:orientation="horizontal" 
             android:gravity="center">
+=======
+            android:gravity="center"
+            android:orientation="horizontal" >
+>>>>>>> better
 
             <View
                 android:layout_width="100dp"
@@ -77,8 +87,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:orientation="horizontal" 
             android:gravity="center">
+=======
+            android:gravity="center"
+            android:orientation="horizontal" >
+>>>>>>> better
 
             <View
                 android:layout_width="80dp"
@@ -108,8 +123,13 @@
                 android:id="@+id/second5"
                 style="@style/CrosswordEditTextBackground2"
                 android:nextFocusRight="@+id/second1" />
+<<<<<<< HEAD
             
              <View
+=======
+
+            <View
+>>>>>>> better
                 android:layout_width="120dp"
                 android:layout_height="match_parent" />
         </LinearLayout>
@@ -117,8 +137,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:orientation="horizontal"
             android:gravity="center" >
+=======
+            android:gravity="center"
+            android:orientation="horizontal" >
+>>>>>>> better
 
             <View
                 android:layout_width="20dp"
@@ -153,7 +178,12 @@
                 android:id="@+id/third6"
                 style="@style/CrosswordEditTextBackground1"
                 android:nextFocusRight="@+id/third1" />
+<<<<<<< HEAD
              <View
+=======
+
+            <View
+>>>>>>> better
                 android:layout_width="160dp"
                 android:layout_height="match_parent" />
         </LinearLayout>
@@ -161,8 +191,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:orientation="horizontal" 
             android:gravity="center">
+=======
+            android:gravity="center"
+            android:orientation="horizontal" >
+>>>>>>> better
 
             <EditText
                 android:id="@+id/fourth1"
@@ -198,7 +233,12 @@
                 android:id="@+id/fourth7"
                 style="@style/CrosswordEditTextBackground2"
                 android:nextFocusRight="@+id/fourth1" />
+<<<<<<< HEAD
              <View
+=======
+
+            <View
+>>>>>>> better
                 android:layout_width="160dp"
                 android:layout_height="match_parent" />
         </LinearLayout>
@@ -206,8 +246,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:orientation="horizontal" 
             android:gravity="center">
+=======
+            android:gravity="center"
+            android:orientation="horizontal" >
+>>>>>>> better
 
             <View
                 android:layout_width="100dp"
@@ -267,8 +312,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:orientation="horizontal"
             android:gravity="center" >
+=======
+            android:gravity="center"
+            android:orientation="horizontal" >
+>>>>>>> better
 
             <View
                 android:layout_width="80dp"
@@ -293,12 +343,18 @@
                 android:id="@+id/sixth4"
                 style="@style/CrosswordEditTextBackground1"
                 android:nextFocusRight="@+id/sixth1" />
+<<<<<<< HEAD
              <View
+=======
+
+            <View
+>>>>>>> better
                 android:layout_width="140dp"
                 android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
 
+<<<<<<< HEAD
     <Button 
         android:id="@+id/check_crossword"
         android:layout_width="wrap_content"
@@ -306,4 +362,13 @@
         android:text="Check it!"
         android:layout_below="@+id/crossword_field"
         />
+=======
+    <Button
+        android:id="@+id/check_crossword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/crossword_field"
+        android:text="Check it!" />
+
+>>>>>>> better
 </RelativeLayout>

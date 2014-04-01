@@ -2,6 +2,7 @@ package lemur.urbest.urbestproject;
 
 import static android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -20,13 +21,26 @@ import android.provider.MediaStore;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+=======
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+>>>>>>> better
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+<<<<<<< HEAD
 import android.widget.Toast;
+=======
+>>>>>>> better
 
 public class Main extends Activity implements OnClickListener {
 
@@ -38,9 +52,14 @@ public class Main extends Activity implements OnClickListener {
 	private static final String TAG = "Ubrest Main";
 
 	private static String[] BUTTON_NAMES = { "Zadania", "Urbest",
+<<<<<<< HEAD
 			"Zrób Zdjêcie", "Mapa", "QR", "Wyniki", "www", "Facebook",
 			"Sponsorzy", "Autorzy" };
 	
+=======
+			"Zrï¿½b Zdjï¿½cie", "Mapa", "QR", "Wyniki", "www", "Facebook",
+			"Sponsorzy", "Autorzy" };
+>>>>>>> better
 
 	private static int TASKS_BUTTON = 0;
 	private static int ABOUT_BUTTON = 1;
@@ -58,6 +77,7 @@ public class Main extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		mainLayout = (LinearLayout) findViewById(R.id.main_linear_layout);
+<<<<<<< HEAD
 		
 		buttonsList = getButtonsList();
 		Log.d(TAG,"ButtonList size: "+buttonsList.size());
@@ -74,6 +94,22 @@ public class Main extends Activity implements OnClickListener {
 	
 	}
 	
+=======
+
+		buttonsList = getButtonsList();
+		Log.d(TAG, "ButtonList size: " + buttonsList.size());
+
+		for (int i = 0; i < buttonsList.size(); i++) {
+			buttonsList.get(i).setText(BUTTON_NAMES[i]);
+			buttonsList.get(i).setOnClickListener(this);
+
+		}
+		buttonsList.get(TASKS_BUTTON).setTextSize(18);
+		buttonsList.get(ABOUT_BUTTON).setTextSize(18);
+
+	}
+
+>>>>>>> better
 	private ArrayList<Button> getButtonsList() {
 
 		ArrayList<Button> buttons = new ArrayList<Button>();
@@ -96,11 +132,22 @@ public class Main extends Activity implements OnClickListener {
 						if (buttonLayout.getChildAt(0) instanceof Button) {
 							Button nextSmallButton = (Button) buttonLayout
 									.getChildAt(0);
+<<<<<<< HEAD
 							
 							nextSmallButton.setId(BUTTON_BASE_ID
 									+ buttonCounter);
 							buttons.add(nextSmallButton);
 							Log.d(TAG,"Button id: "+buttons.get(buttonCounter).getId());
+=======
+
+							nextSmallButton.setId(BUTTON_BASE_ID
+									+ buttonCounter);
+							buttons.add(nextSmallButton);
+							Log.d(TAG,
+									"Button id: "
+											+ buttons.get(buttonCounter)
+													.getId());
+>>>>>>> better
 							buttonCounter++;
 						}
 					}
@@ -122,7 +169,14 @@ public class Main extends Activity implements OnClickListener {
 							nextSmallButton.setId(BUTTON_BASE_ID
 									+ buttonCounter);
 							buttons.add(nextSmallButton);
+<<<<<<< HEAD
 							Log.d(TAG,"Button id: "+buttons.get(buttonCounter).getId());
+=======
+							Log.d(TAG,
+									"Button id: "
+											+ buttons.get(buttonCounter)
+													.getId());
+>>>>>>> better
 							buttonCounter++;
 						}
 					}
@@ -136,10 +190,17 @@ public class Main extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 
+<<<<<<< HEAD
 			if (buttonsList.get(TASKS_BUTTON).getId() == view.getId()) {
 			showTasksList();
 		} else if (buttonsList.get(ABOUT_BUTTON).getId() == view.getId()) {
 			//sendFile();
+=======
+		if (buttonsList.get(TASKS_BUTTON).getId() == view.getId()) {
+			showTasksList();
+		} else if (buttonsList.get(ABOUT_BUTTON).getId() == view.getId()) {
+			// sendFile();
+>>>>>>> better
 		} else if (buttonsList.get(CAMERA_BUTTON).getId() == view.getId()) {
 			takePhoto();
 		} else if (buttonsList.get(MAP_BUTTON).getId() == view.getId()) {
@@ -154,6 +215,7 @@ public class Main extends Activity implements OnClickListener {
 			openFacebook();
 		} else if (buttonsList.get(SPONSORS_BUTTON).getId() == view.getId()) {
 
+<<<<<<< HEAD
 
 		} else if (buttonsList.get(AUTHORS_BUTTON).getId() == view.getId()) {
 
@@ -163,6 +225,13 @@ public class Main extends Activity implements OnClickListener {
 	}
 	
 
+=======
+		} else if (buttonsList.get(AUTHORS_BUTTON).getId() == view.getId()) {
+
+		}
+
+	}
+>>>>>>> better
 
 	private void scanQRcode() {
 		try {
@@ -226,5 +295,9 @@ public class Main extends Activity implements OnClickListener {
 		Intent intent = new Intent(getApplicationContext(), ScoreList.class);
 		startActivity(intent);
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> better
 }

@@ -26,9 +26,15 @@
 
             <Button
                 android:id="@+id/task_button"
+<<<<<<< HEAD
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 style="@style/MenuButtonStyle" />
+=======
+                style="@style/MenuButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+>>>>>>> better
         </LinearLayout>
 
         <LinearLayout
@@ -49,9 +55,15 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:adjustViewBounds="true"
+<<<<<<< HEAD
         android:scaleType="centerCrop"
         android:padding="2dp"
         android:contentDescription="@drawable/urbest_image_scaled"
+=======
+        android:contentDescription="@drawable/urbest_image_scaled"
+        android:padding="2dp"
+        android:scaleType="centerCrop"
+>>>>>>> better
         android:src="@drawable/urbest_image_scaled" />
 
     <LinearLayout
@@ -73,7 +85,10 @@
                 layout="@layout/buttons_layout" />
         </LinearLayout>
 
+<<<<<<< HEAD
         
+=======
+>>>>>>> better
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -81,10 +96,16 @@
 
             <Button
                 android:id="@+id/urbest_button"
+<<<<<<< HEAD
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
  				style="@style/MenuButtonStyle"
                  />
+=======
+                style="@style/MenuButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+>>>>>>> better
         </LinearLayout>
     </LinearLayout>
 
