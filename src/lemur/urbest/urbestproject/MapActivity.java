@@ -1,8 +1,17 @@
 package lemur.urbest.urbestproject;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,64 +26,52 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.Toast;
-
-public class MapActivity extends FragmentActivity implements OnMarkerDragListener{
+public class MapActivity extends FragmentActivity implements
+		OnMarkerDragListener {
 
 	GoogleMap map;
 	private int mode;
 	private Polygon investmentAreas;
-	public int numberOfMarkers=0;
+	public int numberOfMarkers = 0;
 	Button info, answer;
 	Context context;
-	String popupText="Informacja";
-	String answerCorrect="";
-	
+	String popupText = "Informacja";
+	String answerCorrect = "";
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
-		info = (Button)findViewById(R.id.mapInfoButton);
-		answer = (Button)findViewById(R.id.mapAnswerButton);
+		info = (Button) findViewById(R.id.mapInfoButton);
+		answer = (Button) findViewById(R.id.mapAnswerButton);
 		info.setText("Info");
-		answer.setText("OdpowiedŸ");
-		
+		answer.setText("Odpowiedï¿½");
+
 		context = this;
 		info.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				PopUp popup = new PopUp();
 				popup.ShowDialog(context, popupText);
-				
+
 			}
 		});
-		
+
 		answer.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				PopUp popup = new PopUp();
 				popup.ShowAnswer(context, popupText, answerCorrect);
-				
+
 			}
 		});
-		
+
 		Bundle bundle = getIntent().getExtras();
 		mode = bundle.getInt("mode");
-		Log.d("Map onCreate","mode: "+mode);
+		Log.d("Map onCreate", "mode: " + mode);
 		int googlePlayServicesAviable = GooglePlayServicesUtil
 				.isGooglePlayServicesAvailable(getApplicationContext());
 		Log.i("GooglePlayServicesUtil", "isGooglePlayServicesAvailable: "
@@ -95,58 +92,68 @@ public class MapActivity extends FragmentActivity implements OnMarkerDragListene
 		startService(new Intent(this, Tracker2.class));
 
 		CameraPosition cameraPosition = new CameraPosition.Builder()
-				.target(new LatLng(54.407396, 18.591902))
-						.zoom(12) 
-						.bearing(0) // Sets the orientation of the camera to east
-						.tilt(30) // Sets the tilt of the camera to 30 degrees
-						.build(); // Creates a CameraPosition from the builder
+				.target(new LatLng(54.407396, 18.591902)).zoom(12).bearing(0) // Sets
+																				// the
+																				// orientation
+																				// of
+																				// the
+																				// camera
+																				// to
+																				// east
+				.tilt(30) // Sets the tilt of the camera to 30 degrees
+				.build(); // Creates a CameraPosition from the builder
 		map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 		createFunAreaOnMap();
 
-		switch(mode){
-			case 0:{
-				
-				break;
-			}
-			case 1:{
-				ActiveTaskOne();
-				break;
-			}
-			case 2:{
-				
-				
-				popupText = getResources().getString(R.string.info_sculptures);
-				restoreMarkers();
-				
-				map.setOnMapLongClickListener(new OnMapLongClickListener() {
-					
-					@Override
-					public void onMapLongClick(LatLng point) {		
-						
-						if(numberOfMarkers<6){
-							MarkerOptions newMarker = new MarkerOptions().position(point);
-							Marker marker = map.addMarker(newMarker);
-							
-							marker.setDraggable(true);
-							
-							Saver saver = new Saver();
-							saver.saveMarkSculptures(getApplicationContext(), marker.getId(), marker.getPosition(), DatabaseHandler.KEY_MARKER_ID);
-							numberOfMarkers++;
-							
-						}else{
-							Toast.makeText(getApplicationContext(), "Nie ma wiêcej rzêŸb. Przesuñ znaczniki w nowe miejsca", Toast.LENGTH_LONG).show();
-						}
-					}
-				});
-				break;
-			}
-			default:{
-				break;
-			}
-				
+		switch (mode) {
+		case 0: {
+
+			break;
 		}
-		
+		case 1: {
+			ActiveTaskOne();
+			break;
+		}
+		case 2: {
+
+			popupText = getResources().getString(R.string.info_sculptures);
+			restoreMarkers();
+
+			map.setOnMapLongClickListener(new OnMapLongClickListener() {
+
+				@Override
+				public void onMapLongClick(LatLng point) {
+
+					if (numberOfMarkers < 6) {
+						MarkerOptions newMarker = new MarkerOptions()
+								.position(point);
+						Marker marker = map.addMarker(newMarker);
+
+						marker.setDraggable(true);
+
+						Saver saver = new Saver();
+						saver.saveMarkSculptures(getApplicationContext(),
+								marker.getId(), marker.getPosition(),
+								DatabaseHandler.KEY_MARKER_ID);
+						numberOfMarkers++;
+
+					} else {
+						Toast.makeText(
+								getApplicationContext(),
+								"Nie ma wiï¿½cej rzï¿½b. Przesuï¿½ znaczniki w nowe miejsca",
+								Toast.LENGTH_LONG).show();
+					}
+				}
+			});
+			break;
+		}
+		default: {
+			break;
+		}
+
+		}
+
 		// map.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title(
 		// "Zadanie 1"));
 
@@ -154,33 +161,36 @@ public class MapActivity extends FragmentActivity implements OnMarkerDragListene
 		super.onStart();
 	}
 
-
-	private void restoreMarkers(){
+	private void restoreMarkers() {
 
 		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-		
+
 		db.open();
 		Cursor markerCursor = db.getAllEntries(DatabaseHandler.MARKER_TABLE);
-		
+
 		if (markerCursor.moveToFirst()) {
 
 			do {
-				
+
 				LatLng position = new LatLng(
-						markerCursor.getDouble(DatabaseHandler.MARKER_LATITUDE_COLUMN), 
-						markerCursor.getDouble(DatabaseHandler.MARKER_LONGITUDE_COLUMN));
-				
-				MarkerOptions newMarker = new MarkerOptions().position(position);
+						markerCursor
+								.getDouble(DatabaseHandler.MARKER_LATITUDE_COLUMN),
+						markerCursor
+								.getDouble(DatabaseHandler.MARKER_LONGITUDE_COLUMN));
+
+				MarkerOptions newMarker = new MarkerOptions()
+						.position(position);
 				Marker marker = map.addMarker(newMarker);
 				marker.setDraggable(true);
-				
+
 			} while (markerCursor.moveToNext());
 		}
-		
+
 		numberOfMarkers = markerCursor.getCount();
 		db.close();
-		
+
 	}
+
 	private void createFunAreaOnMap() {
 
 		Polygon polygon = map.addPolygon(new PolygonOptions()
@@ -202,14 +212,12 @@ public class MapActivity extends FragmentActivity implements OnMarkerDragListene
 		polygon.setVisible(true);
 	}
 
-
-	
 	@Override
 	protected void onPause() {
-		try{
+		try {
 			investmentAreas.remove();
-		}catch(NullPointerException e){
-			
+		} catch (NullPointerException e) {
+
 		}
 		super.onPause();
 	}
@@ -250,23 +258,21 @@ public class MapActivity extends FragmentActivity implements OnMarkerDragListene
 	@Override
 	public void onMarkerDrag(Marker marker) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onMarkerDragEnd(Marker marker) {
-		 String markerId = marker.getId();
-		 LatLng markerPosition = marker.getPosition();
-		 Log.d("MapActivity","onMarkerDragEnd");
-		 //TODO update marker position
+		String markerId = marker.getId();
+		LatLng markerPosition = marker.getPosition();
+		Log.d("MapActivity", "onMarkerDragEnd");
+		// TODO update marker position
 	}
 
 	@Override
 	public void onMarkerDragStart(Marker marker) {
 		// TODO Auto-generated method stub
-		
-	}
 
-	
+	}
 
 }

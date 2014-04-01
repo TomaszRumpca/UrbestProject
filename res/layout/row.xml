@@ -3,29 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
-    
 
-    <TextView 
+    <TextView
         android:id="@+id/latitude"
         android:layout_width="match_parent"
-    	android:layout_height="40dp"
-    	android:layout_weight="1"
-    	/>
-        
-    <TextView 
+        android:layout_height="40dp"
+        android:layout_weight="1" />
+
+    <TextView
         android:id="@+id/longitude"
         android:layout_width="match_parent"
-    	android:layout_height="40dp"
-		android:layout_weight="1"
-    	/>
-    
-    <TextView 
+        android:layout_height="40dp"
+        android:layout_weight="1" />
+
+    <TextView
         android:id="@+id/date"
         android:layout_width="match_parent"
-    	android:layout_height="40dp"
-    	android:layout_weight="1"
-    	/>
-    
-    
-    
+        android:layout_height="40dp"
+        android:layout_weight="1" />
+
 </LinearLayout>

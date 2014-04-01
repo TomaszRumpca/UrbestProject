@@ -9,8 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class PopUp {
-	
-	
 
 	public void ShowDialog(Context context, String text) {
 		// custom dialog
@@ -44,28 +42,28 @@ public class PopUp {
 
 	}
 
-	
-	public void ShowAnswer(Context context, String text, String answer){
-		if(!answer.equals("")){
+	public void ShowAnswer(Context context, String text, String answer) {
+		if (!answer.equals("")) {
 			ShowAnswerDialog(context, text, answer);
 		} else {
 			ShowAnswerDialog(context, text);
 		}
-		
+
 	}
-	
-	public void ShowAnswerDialog(Context context, String text, String answer){
+
+	public void ShowAnswerDialog(Context context, String text, String answer) {
 		final Dialog dialog = new Dialog(context);
-		
+
 		dialog.setContentView(R.layout.answer_popup);
-		dialog.setTitle("WprowadŸ odpowiedŸ");
-		
-		Button submitButton = (Button) dialog.findViewById(R.id.popUpSubmitButton);
-		Button cancelButton = (Button) dialog.findViewById(R.id.popUpCancelButton);
-		
+		dialog.setTitle("Wprowadï¿½ odpowiedï¿½");
+
+		Button submitButton = (Button) dialog
+				.findViewById(R.id.popUpSubmitButton);
+		Button cancelButton = (Button) dialog
+				.findViewById(R.id.popUpCancelButton);
+
 		EditText edit = (EditText) dialog.findViewById(R.id.popUpEditText);
 
-		
 		submitButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -82,22 +80,21 @@ public class PopUp {
 			}
 		});
 
-		
 		dialog.show();
 	}
 
-	public void ShowAnswerDialog(Context context, String text){
-		
+	public void ShowAnswerDialog(Context context, String text) {
+
 		final Dialog dialog = new Dialog(context);
-		
+
 		dialog.setContentView(R.layout.prompt_popup);
 		dialog.setTitle(text);
-		
-		Button ok = (Button) dialog.findViewById(R.id.protomptPopUpOkButton);
-		
-		TextView textView = (TextView) dialog.findViewById(R.id.promptPopUpTextView);
 
-		
+		Button ok = (Button) dialog.findViewById(R.id.protomptPopUpOkButton);
+
+		TextView textView = (TextView) dialog
+				.findViewById(R.id.promptPopUpTextView);
+
 		ok.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -106,7 +103,6 @@ public class PopUp {
 			}
 		});
 
-	
 		dialog.show();
 	}
 }

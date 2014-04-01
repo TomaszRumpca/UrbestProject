@@ -2,31 +2,20 @@ package lemur.urbest.urbestproject;
 
 import static android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.InputStreamEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 public class Main extends Activity implements OnClickListener {
 
@@ -38,9 +27,8 @@ public class Main extends Activity implements OnClickListener {
 	private static final String TAG = "Ubrest Main";
 
 	private static String[] BUTTON_NAMES = { "Zadania", "Urbest",
-			"Zrób Zdjêcie", "Mapa", "QR", "Wyniki", "www", "Facebook",
+			"Zrï¿½b Zdjï¿½cie", "Mapa", "QR", "Wyniki", "www", "Facebook",
 			"Sponsorzy", "Autorzy" };
-	
 
 	private static int TASKS_BUTTON = 0;
 	private static int ABOUT_BUTTON = 1;
@@ -58,22 +46,20 @@ public class Main extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		mainLayout = (LinearLayout) findViewById(R.id.main_linear_layout);
-		
+
 		buttonsList = getButtonsList();
-		Log.d(TAG,"ButtonList size: "+buttonsList.size());
-		
-		
+		Log.d(TAG, "ButtonList size: " + buttonsList.size());
+
 		for (int i = 0; i < buttonsList.size(); i++) {
 			buttonsList.get(i).setText(BUTTON_NAMES[i]);
 			buttonsList.get(i).setOnClickListener(this);
-			
+
 		}
 		buttonsList.get(TASKS_BUTTON).setTextSize(18);
 		buttonsList.get(ABOUT_BUTTON).setTextSize(18);
-		
-	
+
 	}
-	
+
 	private ArrayList<Button> getButtonsList() {
 
 		ArrayList<Button> buttons = new ArrayList<Button>();
@@ -96,11 +82,14 @@ public class Main extends Activity implements OnClickListener {
 						if (buttonLayout.getChildAt(0) instanceof Button) {
 							Button nextSmallButton = (Button) buttonLayout
 									.getChildAt(0);
-							
+
 							nextSmallButton.setId(BUTTON_BASE_ID
 									+ buttonCounter);
 							buttons.add(nextSmallButton);
-							Log.d(TAG,"Button id: "+buttons.get(buttonCounter).getId());
+							Log.d(TAG,
+									"Button id: "
+											+ buttons.get(buttonCounter)
+													.getId());
 							buttonCounter++;
 						}
 					}
@@ -122,7 +111,10 @@ public class Main extends Activity implements OnClickListener {
 							nextSmallButton.setId(BUTTON_BASE_ID
 									+ buttonCounter);
 							buttons.add(nextSmallButton);
-							Log.d(TAG,"Button id: "+buttons.get(buttonCounter).getId());
+							Log.d(TAG,
+									"Button id: "
+											+ buttons.get(buttonCounter)
+													.getId());
 							buttonCounter++;
 						}
 					}
@@ -136,10 +128,10 @@ public class Main extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 
-			if (buttonsList.get(TASKS_BUTTON).getId() == view.getId()) {
+		if (buttonsList.get(TASKS_BUTTON).getId() == view.getId()) {
 			showTasksList();
 		} else if (buttonsList.get(ABOUT_BUTTON).getId() == view.getId()) {
-			//sendFile();
+			// sendFile();
 		} else if (buttonsList.get(CAMERA_BUTTON).getId() == view.getId()) {
 			takePhoto();
 		} else if (buttonsList.get(MAP_BUTTON).getId() == view.getId()) {
@@ -154,15 +146,11 @@ public class Main extends Activity implements OnClickListener {
 			openFacebook();
 		} else if (buttonsList.get(SPONSORS_BUTTON).getId() == view.getId()) {
 
-
 		} else if (buttonsList.get(AUTHORS_BUTTON).getId() == view.getId()) {
 
-
 		}
-		
-	}
-	
 
+	}
 
 	private void scanQRcode() {
 		try {
@@ -226,5 +214,5 @@ public class Main extends Activity implements OnClickListener {
 		Intent intent = new Intent(getApplicationContext(), ScoreList.class);
 		startActivity(intent);
 	}
-	
+
 }

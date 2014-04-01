@@ -29,9 +29,9 @@ public class Tracker2 extends Service implements LocationListener,
 	private String provider;
 	private GpsStatus gpsStatus;
 
-	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0;//= 10; // 10 meters
-	private static final long MIN_TIME_BW_UPDATES  = 1000 * 60; // 1 minute
-
+	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0;// = 10; // 10
+																	// meters
+	private static final long MIN_TIME_BW_UPDATES = 1000 * 60; // 1 minute
 
 	@Override
 	public IBinder onBind(Intent arg0) {
@@ -47,30 +47,29 @@ public class Tracker2 extends Service implements LocationListener,
 		locationManager = (LocationManager) mContext
 				.getSystemService(Context.LOCATION_SERVICE);
 
-		//provider = locationManager.getBestProvider(createCriteria(), true);
+		// provider = locationManager.getBestProvider(createCriteria(), true);
 
 		provider = LocationManager.GPS_PROVIDER;
-	
+
 		Location location = locationManager.getLastKnownLocation(provider);
-		
-		if(location != null){
+
+		if (location != null) {
 			storeCurrentLocation(location);
 		}
-		
-		locationManager.requestLocationUpdates(provider, MIN_TIME_BW_UPDATES, 0, this);
-		
+
+		locationManager.requestLocationUpdates(provider, MIN_TIME_BW_UPDATES,
+				0, this);
+
 		locationManager.addGpsStatusListener(this);
-		
-		
+
 	}
-	
 
 	@Override
 	public void onLocationChanged(Location location) {
 		Log.i("onLocationChanged",
 				"Location changed to latitude: " + location.getLatitude()
 						+ " longitude: " + location.getLongitude());
-		
+
 		storeCurrentLocation(location);
 
 	}
@@ -90,7 +89,7 @@ public class Tracker2 extends Service implements LocationListener,
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 
-		this.provider = locationManager.getBestProvider(createCriteria(),true);
+		this.provider = locationManager.getBestProvider(createCriteria(), true);
 
 		locationManager.requestLocationUpdates(provider,
 				MIN_DISTANCE_CHANGE_FOR_UPDATES, MIN_TIME_BW_UPDATES, this);
@@ -117,12 +116,12 @@ public class Tracker2 extends Service implements LocationListener,
 		} else if (event == GpsStatus.GPS_EVENT_SATELLITE_STATUS) {
 			gpsStatus = locationManager.getGpsStatus(gpsStatus);
 			Iterable<GpsSatellite> satelites = gpsStatus.getSatellites();
-			
-			
-			for(GpsSatellite satelite : satelites){
-				Log.d("Tracker2 DEBUG",satelite.toString());
+
+			for (GpsSatellite satelite : satelites) {
+				Log.d("Tracker2 DEBUG", satelite.toString());
 			}
-			Log.d("Tracker2 DEBUG", "GPS EVET NECO :"+gpsStatus.getTimeToFirstFix());
+			Log.d("Tracker2 DEBUG",
+					"GPS EVET NECO :" + gpsStatus.getTimeToFirstFix());
 
 		}
 
@@ -132,7 +131,8 @@ public class Tracker2 extends Service implements LocationListener,
 
 		DatabaseHandler db = new DatabaseHandler(mContext);
 
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss",Locale.getDefault());
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss",
+				Locale.getDefault());
 		Date date = new Date();
 		String dateStr = dateFormat.format(date);
 
@@ -145,7 +145,7 @@ public class Tracker2 extends Service implements LocationListener,
 	}
 
 	public void showGPSSettingsAlert() {
-		
+
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
 
 		alertDialog.setTitle("GPS is settings");

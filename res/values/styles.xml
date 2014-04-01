@@ -2,13 +2,13 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
@@ -17,41 +17,35 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
-       <style name="CrosswordEditTextBackground1">
-           
-       <item name="android:layout_width">20dp</item>
-       <item name="android:layout_height">20dp</item>
-       <item name="android:inputType">text</item>
-       <item name="android:textSize">20sp</item>
-       <item name="android:background">#DDDDDD</item>
-       <item name="android:maxLength">2</item>
-       <item name="android:gravity">center</item>
-       
-       
+    <style name="CrosswordEditTextBackground1">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">#DDDDDD</item>
+        <item name="android:maxLength">2</item>
+        <item name="android:gravity">center</item>
     </style>
-    
+
     <style name="CrosswordEditTextBackground2">
-           
-       <item name="android:layout_width">20dp</item>
-       <item name="android:layout_height">20dp</item>
-       <item name="android:inputType">text</item>
-       <item name="android:textSize">20sp</item>
-       <item name="android:background">#BBBBBB</item>
-       <item name="android:maxLength">2</item>
-       <item name="android:gravity">center</item>
-       
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">#BBBBBB</item>
+        <item name="android:maxLength">2</item>
+        <item name="android:gravity">center</item>
     </style>
-    
+
     <style name="MenuButtonStyle">
-        
-       <item name="android:background">@drawable/single_button</item>
-   		<item name="android:textSize">12sp</item>
-   		<item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:background">@drawable/single_button</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#FFFFFFFF</item>
         <item name="android:textStyle">bold</item>
     </style>
-    
+
     <style name="tasksTextStyle">
         <item name="android:textColor">#FFFFFFFF</item>
-        
     </style>
+
 </resources>

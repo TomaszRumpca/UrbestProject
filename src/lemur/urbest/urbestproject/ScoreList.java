@@ -3,9 +3,9 @@ package lemur.urbest.urbestproject;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.widget.ListView;
 
 public class ScoreList extends Activity {
@@ -14,11 +14,10 @@ public class ScoreList extends Activity {
 	DatabaseHandler db;
 	ListView scoreList;
 	private static String TABLE = "Scores";
-	
+
 	String[] task;
 	float[] score;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,37 +35,34 @@ public class ScoreList extends Activity {
 		db.close();
 		super.onDestroy();
 	}
-	
+
 	private void fillItemList() {
 
 		itemCursor = db.getAllEntries(TABLE);
 		startManagingCursor(itemCursor);
 		updateResultsList();
-		
+
 	}
 
 	private void updateResultsList() {
-		
+
 		List<String> tasks = new ArrayList<String>();
 		List<String> scores = new ArrayList<String>();
-		
+
 		itemCursor.requery();
 		if (itemCursor.moveToFirst()) {
 
-			do {				
-				tasks.add(itemCursor
-						.getString(DatabaseHandler.TAKS_COLUMN));
-				scores.add(itemCursor
-						.getString(DatabaseHandler.SCORE_COLUMN));
-				
+			do {
+				tasks.add(itemCursor.getString(DatabaseHandler.TAKS_COLUMN));
+				scores.add(itemCursor.getString(DatabaseHandler.SCORE_COLUMN));
+
 			} while (itemCursor.moveToNext());
 		}
-		
-		ScoreListAdapter adapter = new ScoreListAdapter(this,  tasks, scores, null);
+
+		ScoreListAdapter adapter = new ScoreListAdapter(this, tasks, scores,
+				null);
 		scoreList.setAdapter(adapter);
-		
+
 	}
-
-
 
 }

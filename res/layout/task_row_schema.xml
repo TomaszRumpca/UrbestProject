@@ -1,86 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-     >
+    android:layout_height="match_parent" >
 
-    
-    <TextView 
+    <TextView
         android:id="@+id/task"
+        style="@style/tasksTextStyle"
         android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:text="@string/task"
-    	android:textSize="12sp"
-    	android:paddingLeft="6dp"
-    	android:paddingTop="2dp"
-    	style="@style/tasksTextStyle"
-    	
-    	/>
-    
-    
-    <TextView 
+        android:layout_height="wrap_content"
+        android:paddingLeft="6dp"
+        android:paddingTop="2dp"
+        android:text="@string/task"
+        android:textSize="12sp" />
+
+    <TextView
         android:id="@+id/max_points_number"
+        style="@style/tasksTextStyle"
         android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:text="@string/max_points"
-    	android:textSize="12sp"
-    	android:layout_alignParentRight="true"
-    	android:layout_alignParentTop="true"
-    	android:paddingTop="2dp"
-    	android:paddingRight="6dp"
-    	style="@style/tasksTextStyle"
-    	
-    	/>
-    
-    <TextView 
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:paddingRight="6dp"
+        android:paddingTop="2dp"
+        android:text="@string/max_points"
+        android:textSize="12sp" />
+
+    <TextView
         android:id="@+id/task_title"
+        style="@style/tasksTextStyle"
         android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:layout_below="@+id/task"
-    	android:paddingLeft="15dp"
-    	android:textSize="25sp"
-    	style="@style/tasksTextStyle"
-    	
-    	/>
-        
-    <TextView 
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/task"
+        android:paddingLeft="15dp"
+        android:textSize="25sp" />
+
+    <TextView
         android:id="@+id/description"
+        style="@style/tasksTextStyle"
         android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:text="@string/description"
-    	android:textSize="12sp"
-    	android:paddingLeft="6dp"
-    	android:paddingTop="10dp"
-    	android:layout_below="@+id/task_title"
-    	style="@style/tasksTextStyle"
-    	
-    	/>
-    
-    
-    <TextView 
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/task_title"
+        android:paddingLeft="6dp"
+        android:paddingTop="10dp"
+        android:text="@string/description"
+        android:textSize="12sp" />
+
+    <TextView
         android:id="@+id/short_description"
+        style="@style/tasksTextStyle"
         android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-    	android:layout_below="@+id/description"
-    	android:textSize="16sp"
-		android:padding="6dp"
-		style="@style/tasksTextStyle"
-    	
-	
-    	/>
-    
-    <TextView 
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description"
+        android:padding="6dp"
+        android:textSize="16sp" />
+
+    <TextView
         android:id="@+id/points"
+        style="@style/tasksTextStyle"
         android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:textSize="25sp"
-    	android:layout_alignTop="@+id/task_title"
-    	android:layout_alignParentRight="true"
-    	android:paddingRight="10dp"
-    	style="@style/tasksTextStyle"
-    	
-    	/>
-    
-    
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/task_title"
+        android:paddingRight="10dp"
+        android:textSize="25sp" />
 
 </RelativeLayout>
